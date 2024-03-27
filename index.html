@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,52 +15,56 @@
 
   <script src="Librerias/Poppers/popper.min.js"></script>
 </head>
+
 <body>
   <title>RANCH STYLE</title>
 
   <header class="">
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light">
-        <a class="navbar-brand text-white" href="#">
-          <h3><i class="fa fa-landmark me-2"></i><b> RANCH STYLE</b></h3>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">SERVICES</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">FEATURES</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="#">CONTACT</a>
-            </li>
-          </ul>
+        <div class="container-fluid">
+          <a class="navbar-brand text-white" href="#">
+            <h3><i style="color: #d01616;" class="fa fa-landmark me-2"></i><b style="color: #d01616;">RANCH
+                STYLE</b></h3>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="slide-collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav ms-auto"> <!-- Utilizamos ms-auto para mover los enlaces a la derecha -->
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Nuestro Trabajo</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Nuestros Servicios</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-white" href="#">Conocenos</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>
   </header>
 
-  <section class="py-5 bg-1 text-white">
+  <section class="py-5 bg-1 text-white" style="position: relative;">
     <div class="container py-5">
       <div class="row">
         <div class="col-md-6">
-          <p>RANCH STYLE</p>
-          <h1>Te Evitamos Pedos </h1>
-          <a href="https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=http://localhost:8081/RanchStyle/&client_id=39912971374-rf7qeubtkhb5nfh85g62pds4ksl5qgem.apps.googleusercontent.com&scope=openid%20email&approval_prompt=force"><button type="button" class="btn btn-secondary">Iniciar</button></a>
-          <a href="Registro.php"><button type="button" class="btn btn-secondary">Registrar</button></a>
+          <h3>
+            <p><i class="fa fa-landmark me-2"></i><b>RANCH STYLE</b></p>
+          </h3>
+          <h1>Te Evitamos Pedos</h1>
+          <a
+            href="https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=http://localhost:8081/RanchStyle/&client_id=39912971374-rf7qeubtkhb5nfh85g62pds4ksl5qgem.apps.googleusercontent.com&scope=openid%20email&approval_prompt=force"><button
+              type="button" class="btn btn-dark">Iniciar</button></a>
+          <a href="Registro.php"><button type="button" class="btn btn-dark">Registrar</button></a>
         </div>
-        <div class="col-md-6 d-none d-lg-block">
-          <div class="welcome-layer-3 ">
-            <div class="home3-layer-1 wow fadeInRight" data-wow-delay="0.5s"
-              style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
-              <img src="./Imagenes/logo.png" alt="" style="min-height: 17em; min-width: 17em;" class="div-img">
-            </div>
-          </div>
+        <div class="col-md-6 d-none d-lg-block" style="position: absolute; top: 0; right: 0;">
+          <img src="./Imagenes/logo.png" alt="" style="max-width: 100vh; max-height: 100vh;" class="div-img">
+          <!-- Ajusté el tamaño máximo de la imagen -->
         </div>
       </div>
     </div>
@@ -67,88 +72,103 @@
 
   <section class="py-5 bg-2">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="./Imagenes/aaa.png">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+          <img src="./Imagenes/ranchedit.png"
+            style="max-width: 50vh; max-height: 50vh; margin: auto; border-radius: 50%;" class="img-fluid">
+
         </div>
-        <div class="col-md-6">
-          <div align="center">
-            <h1>Nuestro Trabajo</h1><br>
+        <div class="col-md-6 text-white">
+          <div class="text-center mb-4">
+            <h1>Nuestro Trabajo</h1>
           </div>
-          <h4><b>> Crear Cuenta </b>
-            <p>Para crear una cuenta nuestra plataforma necesitas tu numero de cuenta, nombre y una contraseña. </p>
-            <b>> Ingreso</b>
-            <p>Para ingresar a su cuenta ocupa memorizar su numero y contraseña.</p>
-            <b>> Desactivar Cuenta</b>
-            <p>Podras desactivar y activar tu cuenta.</p>
-          </h4>
+          <div class="card p-2 mx-auto" style="max-width: 300px;" center>
+            <img src="./Imagenes/testimonial-1.png" alt="Imagen" class="img-fluid rounded-circle mx-auto d-block"
+              style="max-width: 400px;"> <!-- Cambié la imagen a un formato circular -->
+          </div>
+          <div class="mt-4">
+            <h4><b> Crear Cuenta </b></h4>
+            <p>Para crear una cuenta en nuestra plataforma necesitas tu número de cuenta, nombre y una contraseña. </p>
+            <h4><b> Ingreso</b></h4>
+            <p>Para ingresar a tu cuenta, solo necesitas tu número y contraseña.</p>
+            <h4><b> Desactivar Cuenta</b></h4>
+            <p>Podrás desactivar y activar tu cuenta según tus necesidades.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="py-5 ">
+  <section class="py-5">
     <div class="container">
       <div class="row">
         <div class="col-md-6 text-white">
           <div align="center">
             <h1>Nuestros Servicios</h1><br>
+            <div class="card p-2 mx-auto" style="max-width: 300px;">
+              <img src="./Imagenes/testimonial-2.png" alt="Imagen" class="img-fluid rounded-circle mx-auto d-block"
+                style="max-width: 400px;">
+            </div>
           </div>
-          <h4>
-            > Retiro. <br> <br>
-            > Checar tu Perfil. <br> <br>
-            > Crear cuentas. <br> <br>
-            > Checar tu Perfil. <br> <br>
-            > Te hablamos con claridad ni términos complicados. <br> <br>
-            > Quédate tranquilo. Te aseguramos que tu información está protegida. <br> <br>
-            > Consulta tu buró en minutos. Sin procesos complicados, sin largas esperas. <br> <br>
-          </h4>
+          <div class="mt-4">
+            <h4><b>Crear Cuenta</b></h4>
+            <p>Para crear una cuenta en nuestra plataforma necesitas tu número de cuenta, nombre y una contraseña.</p>
+            <h4><b>Ingreso</b></h4>
+            <p>Para ingresar a tu cuenta, solo necesitas tu número y contraseña.</p>
+            <h4><b>Desactivar Cuenta</b></h4>
+            <p>Podrás desactivar y activar tu cuenta según tus necesidades.</p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <img src="./Imagenes/bbb.png">
+        <div class="col-md-6 text-center align-self-center">
+          <img src="./Imagenes/bbb.png" class="rounded-circle img-fluid" style="max-width: 600px;">
         </div>
       </div>
+    </div>
   </section>
 
-  <section class="py-5 ">
+  <section class="py-3 ">
     <div class="container">
       <div class="row text-center">
       </div>
     </div>
   </section>
 
-  <section class="py-5 bg-1 text-white">
-    <div class="container py-5">
+  <section class="py-5 bg-light text-white bg-1">
+    <div class="container">
       <div class="row">
+        <div class="col-md-12 text-center">
+          <h1 class="mb-4">Conócenos</h1>
+        </div>
+      </div>
+      <div class="row align-items-center">
         <div class="col-md-4">
-          <div align="center">
-            <h2><i class="fa fa-landmark me-2"></i> RANCH STYLE</h2>
+          <div class="text-center">
+            <h2><i class="fa fa-landmark me-2"></i><b>RANCH STYLE</b></h2>
           </div>
-          <p> Podras administrar tus ingresos y administrar tu boru de credito</p>
+          <p class="lead">Administra tus ingresos y controla tu historial crediticio.</p>
         </div>
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-          <ul>
-            <li>Si tienes pagos atrasados.</li>
-            <li>Que creditos tienes.</li>
-            <li>Si tienes pagos atrasados.</li>
-            <li>Buró de credito estara oculta</li>
+        <div class="col-md-2"></div>
+        <div class="col-md-5 ">
+          <ul class="list-unstyled">
+            <h4>
+              <li><i class="fa fa-check me-2 text-primary"></i> Si tienes pagos atrasados.</li>
+              <li><i class="fa fa-check me-2 text-primary"></i> Qué créditos tienes.</li>
+              <li><i class="fa fa-check me-2 text-primary"></i> Si tienes pagos atrasados.</li>
+              <li><i class="fa fa-check me-2 text-primary"></i> Tu historial crediticio estará protegido.</li>
           </ul>
+          </h4>
         </div>
       </div>
     </div>
   </section>
+
 </body>
+
 </html>
 
 <style type="text/css">
   body {
     background-color: #000000;
-  }
-
-  img {
-    width: 100%;
   }
 
   @media only screen and (max-width: 767px) {
@@ -176,7 +196,6 @@
       top: 0;
       z-index: 49;
     }
-
   }
 
   .div-img {
@@ -184,35 +203,20 @@
     transform: rotate(30deg);
   }
 
-  .welcome-layer-3 {
-    height: 100%;
-    /* left: 0; */
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
-
-  .home3-layer-1 {
-    right: 10%;
-    top: -18%;
-  }
-
-  .welcome-layer-3>div {
-    position: absolute;
-  }
-
   img {
     max-width: 100%;
     height: auto;
+    width: 100%;
   }
 
   .bg-1 {
 
-    background: -webkit-linear-gradient(left, #6C7293, #191C24);
+    background: -webkit-linear-gradient(left, #d01616, #191C24);
   }
 
   .bg-2 {
 
-    background-color: #AEB3B8;
+    background-color: #000000;
+
   }
 </style>
