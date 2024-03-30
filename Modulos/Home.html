@@ -1,0 +1,113 @@
+<!-- Sale & Revenue Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <!-- Saldo  -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-line fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Saldo</p>
+                    <h6 class="mb-0"><!-- Saldo --></h6>
+                </div>
+            </div>
+        </div>
+        <!-- Tipo  -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-globe fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Tipo de cuenta</p>
+                    <h6 class="mb-0"><!-- Tipo --></h6>
+                </div>
+            </div>
+        </div>
+        <!-- Numero  -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-hashtag fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Numero de cuenta</p>
+                    <h6 class="mb-0"><!-- Numero --></h6>
+                </div>
+            </div>
+        </div>
+        <!-- Fecha  -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-calendar fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Fecha</p>
+                    <h6 class="mb-0"><!-- Fecha --></h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sale & Revenue End -->
+
+<!-- Sales Chart Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Worldwide Sales</h6>
+                    <a href="">Show All</a>
+                </div>
+                <canvas id="worldwide-sales"></canvas>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Salse & Revenue</h6>
+                    <a href="">Show All</a>
+                </div>
+                <canvas id="salse-revenue"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Sales Chart End -->
+
+<!-- Recent Sales Start -->
+<!-- Registros -->
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-secondary text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Registros recientes</h6>
+            <a href="">Show All</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-white">
+                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Fecha</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Select -->
+                    <tr>
+                        <td><input class="form-check-input" type="checkbox"></td>
+                        <td><!-- Columna ID --></td>
+                        <td><!-- Columna Usuario --></td>
+                        <!-- Condicion -->
+                        <td class="text-danger">-$<!-- Columna Cantidad --></td>
+                        <!-- Condicion si no -->
+                        <td class="text-success">+$<!-- Columna Cantidad --></td>
+                        <!-- Cierre de condicion -->
+                        <td><!-- Columna Fecha --></td>
+                    </tr>
+                    <!-- Cierre de Foreach -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- Recent Sales End -->
+
+<script src="../FuncionesJS/Home.js"></script>
