@@ -2,8 +2,8 @@ class GoogleOAuth {
     constructor(client_id, redirect_uri){
         this.client_id = client_id;
         this.redirect_uri = redirect_uri;
-        this.auth_endpoint = 'https://accounts.google.com/o/oauth2/auth';
-        this.scope = 'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email';
+        this.auth_endpoint = Credencial.auth_uri;
+        this.scope = Links.scope;
     }
 
     handleGoogleLogin(){
