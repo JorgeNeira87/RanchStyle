@@ -2,18 +2,14 @@ function loadModule(modulePath) {
     const moduleLoader = new ModuleLoader('contenido');
     moduleLoader.loadModule(modulePath);
 }
+Promise.all([cuenta()])
+.then(resultados => {
+    let datos = resultados[0];
+    console.log(datos)
+    $("#name").text(datos.nombre);
+    $("#imagen").attr("src", datos.picture);
+});
 
-function cuenta(){
-    var googleOAuth = new GoogleOAuth(Credencial.client_id, Credencial.client_secret, Links.local);
-    googleOAuth.handleRedirect()
-    .then(userinfo => {
-        $("#name").text(userinfo.given_name);
-        $("#imagen").attr("src", userinfo.picture);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-}
 
 // Back to top button
 $(window).scroll(function () {
