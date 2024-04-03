@@ -1,10 +1,11 @@
-let datosCuenta, ArrayCuentas;
-
+let datos, ArrayCuentas;
+datosCuenta();
+    
 Promise.all([cuenta(), arrayCuentas()])
     .then(resultados => {
-        datosCuenta = resultados[0];
+        datos = resultados[0];
         ArrayCuentas = resultados[1];
-
+console.log(datos)
         if (!checarExistencia()) {
             guardarDatos();
         }
@@ -17,7 +18,7 @@ Promise.all([cuenta(), arrayCuentas()])
 
 function checarExistencia() {
     for (let i = 0; i < ArrayCuentas.length; i++) {
-        if (ArrayCuentas[i] = datosCuenta.id) {
+        if (ArrayCuentas[i] = datos.id) {
             return true;
         }
     }
@@ -25,13 +26,13 @@ function checarExistencia() {
 }
 
 function guardarDatos() {
-    console.log(datosCuenta);
+    console.log(datos);
     let clavePublica, clavePrivada, nombre, correo;
 
-    clavePublica = encryptMessage(datosCuenta.id, llaves.publico);
-    clavePrivada = encryptMessage(datosCuenta.id, llaves.privado);
-    nombre = encryptMessage(datosCuenta.name, llaves.datos);
-    correo = encryptMessage(datosCuenta.email, llaves.datos);
+    clavePublica = encryptMessage(datos.id, llaves.publico);
+    clavePrivada = encryptMessage(datos.id, llaves.privado);
+    nombre = encryptMessage(datos.name, llaves.datos);
+    correo = encryptMessage(datos.email, llaves.datos);
 
     var datos = {
         "clavePublica": clavePublica,
