@@ -1,25 +1,18 @@
 <?php
-    session_start();
     require_once ("conexion.php");
-?>
-<?php
-    $ContadorU = 0;
-    $sql = $cnnPDO ->prepare("SELECT * FROM usuarios");
-    $sql -> execute();
-    $row = $sql -> fetchAll();
+    
+    try {
+        $sql = "SELECT UsuarioClavePrivada, UsuarioClavePublica, UsuarioNombre, UsuarioCorreo FROM usuarios";
+        $cuentas = $cnnPDO ->query($sql);
+        $datos = $cuentas->fetchAll(PDO::FETCH_ASSOC);
 
-    foreach($row as $r){
-?>
-        <?php echo $r['nombre']; ?>
-        <?php echo $r['numero']; ?>
-        <?php echo $r['saldo']; ?>
-        <?php echo $r['nombre']; ?>
-        <?php echo $r['numero']; ?>
-        <?php echo $r['tipo']; ?>
-        <?php echo $r['contrasena']; ?>
-        <?php echo $r['estado']; ?>
-        <?php echo $r['fecha']; ?>
-        <?php $ContadorU++;
+        $datos_json = json_encode($datos);
+
+        header('Content-Type: application/json');
+
+        echo $datos_json;
+    } catch (PDOException $e) {
+        echo "Error de conexión: " . $e->getMessage();
     }
-    $ContadorU = 0;
+    
 ?>

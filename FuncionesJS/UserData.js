@@ -3,7 +3,7 @@ class GoogleOAuth {
         this.client_id = client_id;
         this.client_secret = client_secret;
         this.redirect_uri = redirect_uri;
-        this.token_endpoint = 'https://accounts.google.com/o/oauth2/token';
+        this.token_endpoint = Credencial.token_uri;
     }
 
     handleRedirect() {
