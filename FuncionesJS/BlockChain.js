@@ -4,7 +4,6 @@ Promise.all([datosCuenta(), arrayCuentas()])
     .then(resultados => {
         datos = resultados[0];
         ArrayCuentas = resultados[1];
-        console.log(datos)
 
         if (!checarExistencia()) {
             guardarDatos(datos);
@@ -34,13 +33,15 @@ function sessionDatos(datos) {
             dato: datos.id
         },
         success: function (response) {
+            var decrypDatosArray = decryptArray(response[0].UsuarioDatos, llaves.datos);
+
             var arrayDatos = {
-                "id": datos.id,
-                "email": datos.email,
-                "picture": datos.picture,
-                "name": datos.name,
-                "family_name": datos.family_name,
-                "given_name": datos.given_name,
+                "id": decrypDatosArray.id,
+                "email": decrypDatosArray.email,
+                "picture": decrypDatosArray.picture,
+                "name": decrypDatosArray.name,
+                "family_name": decrypDatosArray.family_name,
+                "given_name": decrypDatosArray.given_name,
                 "clavePublica": response[0].UsuarioClavePublica,
                 "clavePrivada": response[0].UsuarioClavePrivada
             }
@@ -68,16 +69,26 @@ function sessionDatos(datos) {
 }
 
 function guardarDatos(datos) {
-    let clavePublica, clavePrivada;
+    let clavePublica, clavePrivada, encryptedDatos;
     
+    var arrayDatosUsuario = {
+        "id": datos.id,
+        "email": datos.email,
+        "picture": datos.picture,
+        "name": datos.name,
+        "family_name": datos.family_name,
+        "given_name": datos.given_name
+    }
 
     clavePublica = encryptMessage(datos.id, llaves.publico);
     clavePrivada = encryptMessage(datos.id, llaves.privado);
+    encryptedDatos = encryptArray(arrayDatosUsuario, llaves.datos);
 
     var arrayDatos = {
         "UsuarioID": datos.id,
-        "clavePublica": clavePublica,
-        "clavePrivada": clavePrivada
+        "ClavePublica": clavePublica,
+        "ClavePrivada": clavePrivada,
+        "Datos": encryptedDatos
     }
 
     $.ajax({

@@ -4,14 +4,16 @@
     try {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $userid = $_POST['UsuarioID'];
-            $publica = $_POST['clavePublica'];
-            $privada = $_POST['clavePrivada'];
+            $publica = $_POST['ClavePublica'];
+            $privada = $_POST['ClavePrivada'];
+            $datosRecibidos  = $_POST['Datos'];
             
-            $sql = "INSERT usuarios(UsuarioID, UsuarioClavePrivada, UsuarioClavePublica) VALUES (:id, :privada, :publica)";
+            $sql = "INSERT usuarios(UsuarioID, UsuarioClavePrivada, UsuarioClavePublica, UsuarioDatos) VALUES (:id, :privada, :publica, :datos)";
             $datos = $cnnPDO ->prepare($sql);
             $datos->bindParam(':id', $userid);
             $datos->bindParam(':privada', $privada);
             $datos->bindParam(':publica', $publica);
+            $datos->bindParam(':datos', $datosRecibidos );
             $datos-> execute();
 
             echo true;
