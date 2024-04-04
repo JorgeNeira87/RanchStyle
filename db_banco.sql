@@ -55,31 +55,29 @@ INSERT INTO `registros` (`id`, `usuario`, `cantidad`, `fecha`, `tipo`) VALUES
 --
 -- Estructura de tabla para la tabla `usuarios`
 --
+IF EXISTS (
+    SELECT 1 
+    FROM information_schema.tables 
+    WHERE table_schema = 'db_banco' 
+    AND table_name = 'usuarios'
+) THEN
+    DROP TABLE db_banco.usuarios;
+END IF;
+
 
 CREATE TABLE `usuarios` (
-  `numero` varchar(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `tipo` varchar(100) NOT NULL,
-  `contrasena` varchar(100) NOT NULL,
-  `saldo` decimal(10,2) NOT NULL,
-  `estado` varchar(100) NOT NULL,
-  `fecha` date NOT NULL DEFAULT current_timestamp(),
-  `rango` varchar(100) NOT NULL
+  `UsuarioClavePrivada` varchar(100) NOT NULL,
+  `UsuarioClavePublica` varchar(100) NOT NULL,
+  `UsuarioNombre` varchar(100) NOT NULL,
+  `UsuarioCorreo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`numero`, `nombre`, `tipo`, `contrasena`, `saldo`, `estado`, `fecha`, `rango`) VALUES
-('415417', 'Emori', 'Debito', '123456', '100.00', 'Activo', '2023-02-01', 'Usuario'),
-('415418', 'Jorge', 'Ahorro', '741852', '200.30', 'Activo', '2023-02-01', 'Usuario'),
-('415419', 'Valente', 'Debito', '45648', '0.00', 'Activo', '2023-02-02', 'Usuario'),
-('415420', 'Chon', 'Ahorro', '74626', '0.00', 'Activo', '2023-02-02', 'Usuario'),
-('415421', 'Emily', 'Debito', '741', '0.00', 'Activo', '2023-02-02', 'Usuario'),
-('415456', 'Angel', 'Debito', '78551', '0.00', 'Activo', '2023-02-02', 'Usuario'),
-('415789', 'Luis', 'Tarjeta de crédito', '213465', '0.00', 'Activo', '2023-02-02', 'Usuario'),
-('@admin', 'Administrador', 'Tarjeta de crédito', '54321', '99999999.99', 'Activo', '2023-02-01', 'Administrador');
+INSERT INTO `usuarios` (`UsuarioClavePrivada`, `UsuarioClavePublica`, `UsuarioNombre`, `UsuarioCorreo`) VALUES
+('U2FsdGVkX1/rZSHBa9z3Y6TuJUpoUC844hGFTpUfiaXm4g8lWwg9I9jPJSNHJ18A', 'U2FsdGVkX19QsI6QXTV2lNPwp11nJgesO+GsobXdimqHTIK9sTCDTX+qJIELMphO', 'U2FsdGVkX1+HTRDlF+NXVyOHve1y+xYR2nerk9o/8HzFZWxkFuBsMWo6akEqJ99Z', 'U2FsdGVkX182Bfc/JfWDsuWTmvgSAkyutCjSs8qbCZZuA4osKRsJ36Zx42f+XRe/');
 
 --
 -- Índices para tablas volcadas
