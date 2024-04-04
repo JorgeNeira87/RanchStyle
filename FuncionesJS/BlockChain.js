@@ -1,22 +1,23 @@
 let datos, ArrayCuentas;
-datosCuenta();
     
-Promise.all([cuenta(), arrayCuentas()])
+Promise.all([datosCuenta(), arrayCuentas()])
     .then(resultados => {
         datos = resultados[0];
         ArrayCuentas = resultados[1];
-console.log(datos)
+        console.log(datos)
+
         if (!checarExistencia()) {
-            guardarDatos();
+            guardarDatos(datos);
         }
         
-        window.location.href = "../Modulos/Principal.html";
+        sessionDatos(datos);
     })
     .catch(error => {
         console.error('Error:', error);
     });
 
 function checarExistencia() {
+    console.log(ArrayCuentas)
     for (let i = 0; i < ArrayCuentas.length; i++) {
         if (ArrayCuentas[i] = datos.id) {
             return true;
@@ -25,26 +26,37 @@ function checarExistencia() {
     return false;
 }
 
-function guardarDatos() {
-    console.log(datos);
-    let clavePublica, clavePrivada, nombre, correo;
+function sessionDatos(datos) {
+    $.ajax({
+        url: '../FuncionesPHP/Datos.php',
+        type: 'POST',
+        data: datos,
+        success: function(response) {
+            window.location.href = "../Modulos/Principal.html";
+        },
+        error: function(xhr, status, error) {
+            console.error('Error en la solicitud:', error);
+        }
+    });
+}
+
+function guardarDatos(datos) {
+    let clavePublica, clavePrivada;
+    
 
     clavePublica = encryptMessage(datos.id, llaves.publico);
     clavePrivada = encryptMessage(datos.id, llaves.privado);
-    nombre = encryptMessage(datos.name, llaves.datos);
-    correo = encryptMessage(datos.email, llaves.datos);
 
-    var datos = {
+    var arrayDatos = {
+        "UsuarioID": datos.id,
         "clavePublica": clavePublica,
         "clavePrivada": clavePrivada,
-        "Nombre": nombre,
-        "Correo": correo
     }
 
     $.ajax({
         url: '../FuncionesPHP/GuardarDatos.php',
         type: 'POST',
-        data: datos,
+        data: arrayDatos,
         success: function(response) {
             console.log('La solicitud fue exitosa:', response);
         },

@@ -13,12 +13,13 @@ var Credencial = {
     };
 
 var Links = {
-    "local": "http://localhost/RanchStyle/Modulos/BlockChain.html",
+    "local": "http://localhost:8081/RanchStyle/Modulos/BlockChain.html",
     "scope": "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
 }
 
 var llaves = {
     "publico": "&+w89n.>SbV!£LZ`)fi\ZP;O$S=fAJ9Rj,opP'4mkU2[DjVsxf",
     "privado": "#B+[D?}Y0@?P3z95~[@[:gO{ME8p.eA!Xy8kcSOy%!:bXzb;^",
-    "datos": "0*v6'W@7rRhM3me]/7sp2)~,U4&;sRC\{?DzW`jLJk{O[H[Ye"
+    "datos": "0*v6'W@7rRhM3me]/7sp2)~,U4&;sRC\{?DzW`jLJk{O[H[Ye",
+    "iv": "QU7,)$U.}0j<`&>__6\KmM3Kisj<q:f=n63cdvv?ue|+;.3x)Z"
 }

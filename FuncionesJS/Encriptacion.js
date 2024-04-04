@@ -1,17 +1,19 @@
 function encryptMessage(dato, llave) {
-    const message = dato;
-    const key = llave;
+    const encrypted = CryptoJS.AES.encrypt(dato, llave).toString();
 
-    const encrypted = CryptoJS.AES.encrypt(message, key).toString();
+    return encrypted;
+}
+
+function encryptArray(dato, llave) {
+    var iv = CryptoJS.enc.Utf8.parse(llaves.iv);
+
+    const encrypted = CryptoJS.AES.encrypt(dato, llave, { iv: iv }).toString();
 
     return encrypted;
 }
 
 function decryptMessage(dato, llave) {
-    const encryptedMessage = dato;
-    const key = llave;
-
-    const decrypted = CryptoJS.AES.decrypt(encryptedMessage, key).toString(CryptoJS.enc.Utf8);
+    const decrypted = CryptoJS.AES.decrypt(dato, llave).toString(CryptoJS.enc.Utf8);
 
     return decrypted;
 }

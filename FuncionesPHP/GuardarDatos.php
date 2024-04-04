@@ -3,17 +3,15 @@
 
     try {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $userid = $_POST['UsuarioID'];
             $publica = $_POST['clavePublica'];
             $privada = $_POST['clavePrivada'];
-            $nombre = $_POST['Nombre'];
-            $correo = $_POST['Correo'];
             
-            $sql = "INSERT INTO usuarios(UsuarioClavePrivada, UsuarioClavePublica, UsuarioNombre, UsuarioCorreo) VALUES (:privada, :publica, :nombre, :correo)";
+            $sql = "INSERT usuarios(UsuarioID, UsuarioClavePrivada, UsuarioClavePublica) VALUES (:id, :privada, :publica)";
             $datos = $cnnPDO ->prepare($sql);
+            $datos->bindParam(':id', $userid);
             $datos->bindParam(':privada', $privada);
             $datos->bindParam(':publica', $publica);
-            $datos->bindParam(':nombre', $nombre);
-            $datos->bindParam(':correo', $correo);
             $datos-> execute();
 
             echo true;

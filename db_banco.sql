@@ -66,18 +66,17 @@ END IF;
 
 
 CREATE TABLE `usuarios` (
+  `UsuarioID` varchar(100) NOT NULL,
   `UsuarioClavePrivada` varchar(100) NOT NULL,
-  `UsuarioClavePublica` varchar(100) NOT NULL,
-  `UsuarioNombre` varchar(100) NOT NULL,
-  `UsuarioCorreo` varchar(100) NOT NULL
+  `UsuarioClavePublica` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`UsuarioClavePrivada`, `UsuarioClavePublica`, `UsuarioNombre`, `UsuarioCorreo`) VALUES
-('U2FsdGVkX1/rZSHBa9z3Y6TuJUpoUC844hGFTpUfiaXm4g8lWwg9I9jPJSNHJ18A', 'U2FsdGVkX19QsI6QXTV2lNPwp11nJgesO+GsobXdimqHTIK9sTCDTX+qJIELMphO', 'U2FsdGVkX1+HTRDlF+NXVyOHve1y+xYR2nerk9o/8HzFZWxkFuBsMWo6akEqJ99Z', 'U2FsdGVkX182Bfc/JfWDsuWTmvgSAkyutCjSs8qbCZZuA4osKRsJ36Zx42f+XRe/');
+INSERT INTO `usuarios` (`UsuarioID`, `UsuarioClavePrivada`, `UsuarioClavePublica`) VALUES
+('108848749981709851867', 'U2FsdGVkX19PxAvsmhZ+c6qLPhDVbOp6+HIVi3m73UuXqeKq8EDdRGTIBcK0VjVE', 'U2FsdGVkX19dRk5etyMMXY3f5o4TysU+LfWjNpAQ342m6g9RXpvEy+EGjSEfbhrf');
 
 --
 -- Índices para tablas volcadas
@@ -93,7 +92,7 @@ ALTER TABLE `registros`
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`numero`);
+  ADD PRIMARY KEY (`UsuarioID`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
