@@ -1,5 +1,5 @@
 let datos, ArrayCuentas;
-    
+
 Promise.all([datosCuenta(), arrayCuentas()])
     .then(resultados => {
         datos = resultados[0];
@@ -17,7 +17,6 @@ Promise.all([datosCuenta(), arrayCuentas()])
     });
 
 function checarExistencia() {
-    console.log(ArrayCuentas)
     for (let i = 0; i < ArrayCuentas.length; i++) {
         if (ArrayCuentas[i] = datos.id) {
             return true;
@@ -27,17 +26,45 @@ function checarExistencia() {
 }
 
 function sessionDatos(datos) {
+
     $.ajax({
-        url: '../FuncionesPHP/Datos.php',
-        type: 'POST',
-        data: datos,
-        success: function(response) {
-            window.location.href = "../Modulos/Principal.html";
+        url: '../FuncionesPHP/ObtenerClaves.php',
+        type: 'GET',
+        data: {
+            dato: datos.id
         },
-        error: function(xhr, status, error) {
-            console.error('Error en la solicitud:', error);
+        success: function (response) {
+            var arrayDatos = {
+                "id": datos.id,
+                "email": datos.email,
+                "picture": datos.picture,
+                "name": datos.name,
+                "family_name": datos.family_name,
+                "given_name": datos.given_name,
+                "clavePublica": response[0].UsuarioClavePublica,
+                "clavePrivada": response[0].UsuarioClavePrivada
+            }
+            $.ajax({
+                url: '../FuncionesPHP/Datos.php',
+                type: 'POST',
+                data: arrayDatos,
+                success: function(response) {
+                    window.location.href = "../Modulos/Principal.html";
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error en la solicitud:', error);
+                }
+            });
+        },
+        error: function (xhr, status, error) {
+            console.log(error);
         }
     });
+
+    
+
+
+
 }
 
 function guardarDatos(datos) {
@@ -50,7 +77,7 @@ function guardarDatos(datos) {
     var arrayDatos = {
         "UsuarioID": datos.id,
         "clavePublica": clavePublica,
-        "clavePrivada": clavePrivada,
+        "clavePrivada": clavePrivada
     }
 
     $.ajax({

@@ -5,7 +5,7 @@
 
         $dato = $_GET['dato'];
 
-        $sql = "SELECT UsuarioID FROM usuarios WHERE UsuarioID = :llave";
+        $sql = "SELECT UsuarioClavePrivada, UsuarioClavePublica FROM usuarios WHERE UsuarioID = :llave";
         $cuentas = $cnnPDO ->prepare($sql);
         $cuentas->bindParam(':llave', $dato);
         $cuentas-> execute();

@@ -8,6 +8,8 @@
             $_SESSION["nombrecompleto"] = $_POST['name'];
             $_SESSION["imagen"] = $_POST['picture'];
             $_SESSION["id"] = $_POST['id'];
+            $_SESSION["clavePrivada"] = $_POST['clavePrivada'];
+            $_SESSION["clavePublica"] = $_POST['clavePublica'];
         } else {
             echo "La solicitud no es POST";
         }

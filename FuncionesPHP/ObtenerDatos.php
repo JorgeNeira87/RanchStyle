@@ -6,7 +6,9 @@
         'nombrecompleto' => $_SESSION["nombrecompleto"],
         'email' => $_SESSION["correo"],
         'picture' => $_SESSION["imagen"],
-        'id' => $_SESSION["id"]
+        'id' => $_SESSION["id"],
+        'clavePrivada' => $_SESSION["clavePrivada"],
+        'clavePublica' => $_SESSION["clavePublica"]
     ];
 
     $datos_json = json_encode($array);

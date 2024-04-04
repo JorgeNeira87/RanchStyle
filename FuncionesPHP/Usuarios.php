@@ -2,7 +2,7 @@
     require_once ("conexion.php");
     
     try {
-        $sql = "SELECT UsuarioID, UsuarioClavePrivada, UsuarioClavePublica FROM usuarios";
+        $sql = "SELECT UsuarioClavePrivada FROM usuarios";
         $cuentas = $cnnPDO ->query($sql);
         $datos = $cuentas->fetchAll(PDO::FETCH_ASSOC);
 

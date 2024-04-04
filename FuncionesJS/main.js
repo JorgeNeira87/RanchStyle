@@ -1,7 +1,3 @@
-function loadModule(modulePath) {
-    const moduleLoader = new ModuleLoader('contenido');
-    moduleLoader.loadModule(modulePath);
-}
 Promise.all([cuenta()])
 .then(resultados => {
     let datos = resultados[0];
@@ -9,6 +5,10 @@ Promise.all([cuenta()])
     $("#name").text(datos.nombre);
     $("#imagen").attr("src", datos.picture);
 });
+function loadModule(modulePath) {
+    const moduleLoader = new ModuleLoader('contenido');
+    moduleLoader.loadModule(modulePath);
+}
 
 
 // Back to top button
