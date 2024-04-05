@@ -3,7 +3,7 @@ Promise.all([cuenta()])
         var transacciones = new Transacciones();
         var claves = new ObtenerClaves(resultados[0]);
 
-        Promise.all([claves.obtenerClaves(),transacciones.obtenerArrayTransacciones()])
+        Promise.all([claves.obtenerClaves(), transacciones.obtenerArrayTransacciones()])
             .then(resultados => {
                 var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
                 mostrarTransaccioes(resultados[1], resultados[0][0].UsuarioClavePublica)
@@ -20,29 +20,27 @@ Promise.all([cuenta()])
         console.error('Error:', error);
     });
 
-    function mostrarTransaccioes(array, clavePublica){
-        console.log(clavePublica)
-        
-        var tbody = document.getElementById("tabla");
+function mostrarTransaccioes(array, clavePublica) {
+    console.log(clavePublica)
 
-        for (let i = 0; i < array.length; i++) {
-            var Transaccion = decryptArray(array[i].datos,llaves.firmas)
-            if(Transaccion.remitenteId === clavePublica){
-                var tr = document.createElement("tr");
-                var tdusuario = document.createElement("td");
-                tdusuario.textContent = Transaccion.destinatarioId;
-                var tdcantidad = document.createElement("td");
-                tdcantidad.textContent = Transaccion.cantidad;
-                var tdtipo = document.createElement("td");
-                tdtipo.textContent = Transaccion.tipoTransaccion;
-                tr.appendChild(tdusuario);
-                tr.appendChild(tdcantidad);
-                tr.appendChild(tdtipo);
-                
-                tbody.appendChild(tr);
+    var tbody = document.getElementById("tabla");
 
-            }
+    for (let i = 0; i < array.length; i++) {
+        var Transaccion = decryptArray(array[i].datos, llaves.firmas)
+        if (Transaccion.remitenteId === clavePublica) {
+            var tr = document.createElement("tr");
+            var tdusuario = document.createElement("td");
+            tdusuario.textContent = Transaccion.destinatarioId;
+            var tdcantidad = document.createElement("td");
+            tdcantidad.textContent = Transaccion.cantidad;
+            var tdtipo = document.createElement("td");
+            tdtipo.textContent = Transaccion.tipoTransaccion;
+            tr.appendChild(tdusuario);
+            tr.appendChild(tdcantidad);
+            tr.appendChild(tdtipo);
 
-            console.log(decryptArray(array[i].datos,llaves.firmas))            
+            tbody.appendChild(tr);
+
         }
     }
+}
