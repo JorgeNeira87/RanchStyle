@@ -60,12 +60,16 @@ function actualizarDatos(datos) {
         success: function (response) {
             console.log(response);
             var decrypDatosArray = decryptArray(response[0].UsuarioDatos, llaves.datos);
-            console.log(decrypDatosArray);
+            var userId = decryptMessage(response[0].UsuarioClavePrivada, llaves.privado);
+            userId = parseInt(userId) + 11111;
 
             decrypDatosArray.telefono = $("#telefono").val();
+            decrypDatosArray.tipoCuenta = $("#cuenta").val();
             decrypDatosArray.nip = $("#nip").val();
             decrypDatosArray.rfc = $("#rfc").val();
             decrypDatosArray.contrasena = $("#contrasena").val();
+            decrypDatosArray.numeroCuenta = userId
+            decrypDatosArray.saldo = 0.0
             
             var nuevosDatos = {
                 "UsuarioID": datos.id,

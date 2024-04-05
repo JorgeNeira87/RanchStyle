@@ -1,16 +1,35 @@
 let datos, ArrayCuentas;
+const cuentas = new Cuentas();
 
-Promise.all([datosCuenta(), arrayCuentas()])
+Promise.all([datosCuenta(), cuentas.obtenerArrayCuentasID()])
     .then(resultados => {
         datos = resultados[0];
         ArrayCuentas = resultados[1];
-        console.log(checarExistencia())
+        var claves = new ObtenerClaves(datos);
+
         if (!checarExistencia()) {
             guardarDatos(datos);
-            sessionDatos(datos);
+            Promise.all([claves.obtenerClaves()])
+                .then(resultados => {
+                    console.log(resultados[0]);
+                    var session = new SessionDatos(resultados[0]);
+                    session.guardarDatos();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+
             window.location.href = "../Modulos/Principal.html?pagina=PrimeraVez";
         } else {
-            sessionDatos(datos);
+            Promise.all([claves.obtenerClaves()])
+                .then(resultados => {
+                    console.log(resultados[0]);
+                    var session = new SessionDatos(resultados[0]);
+                    session.guardarDatos();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
             window.location.href = "../Modulos/Principal.html?pagina=Home";
         }
         
@@ -21,61 +40,11 @@ Promise.all([datosCuenta(), arrayCuentas()])
 
 function checarExistencia() {
     for (let i = 0; i < ArrayCuentas.length; i++) {
-            console.log(ArrayCuentas[i].UsuarioID)
-            console.log(datos.id)
         if (ArrayCuentas[i].UsuarioID === datos.id) {
             return true;
         }
     }
     return false;
-}
-
-function sessionDatos(datos) {
-
-    $.ajax({
-        url: '../FuncionesPHP/ObtenerClaves.php',
-        type: 'GET',
-        data: {
-            dato: datos.id
-        },
-        success: function (response) {
-            console.log(response)
-
-            var decrypDatosArray = decryptArray(response[0].UsuarioDatos, llaves.datos);
-
-            console.log(decrypDatosArray);
-
-            var arrayDatos = {
-                "id": decrypDatosArray.id,
-                "email": decrypDatosArray.email,
-                "picture": decrypDatosArray.picture,
-                "name": decrypDatosArray.name,
-                "family_name": decrypDatosArray.family_name,
-                "given_name": decrypDatosArray.given_name,
-                "clavePublica": response[0].UsuarioClavePublica,
-                "clavePrivada": response[0].UsuarioClavePrivada
-            }
-            $.ajax({
-                url: '../FuncionesPHP/Datos.php',
-                type: 'POST',
-                data: arrayDatos,
-                success: function(response) {
-                    // window.location.href = "../Modulos/Principal.html?pagina=Home";
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error en la solicitud:', error);
-                }
-            });
-        },
-        error: function (xhr, status, error) {
-            console.log(error);
-        }
-    });
-
-    
-
-
-
 }
 
 function guardarDatos(datos) {

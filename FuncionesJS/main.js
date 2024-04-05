@@ -4,6 +4,8 @@ Promise.all([cuenta()])
 
     $("#name").text(datos.nombre);
     $("#imagen").attr("src", datos.picture);
+    loadModule();
+    spinner();
 });
 
 function loadModule() {
@@ -14,7 +16,7 @@ function loadModule() {
     var moduloID = "#" + valor;
 
     $(Modulos.Home).removeClass("active");
-    $(Modulos.Desactivar).removeClass("active");
+    $(Modulos.Deposito).removeClass("active");
     $(Modulos.Retiro).removeClass("active");
 
     $(moduloID).addClass("active");

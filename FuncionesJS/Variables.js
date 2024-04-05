@@ -26,6 +26,6 @@ var llaves = {
 
 var Modulos = {
     "Home": "#Home",
-    "Desactivar": "#Desactivar",
+    "Deposito": "#Deposito",
     "Retiro": "#Retiro"
 }
