@@ -58,35 +58,37 @@ function actualizarDatos(datos) {
             dato: datos.id
         },
         success: function (response) {
-            console.log(response);
             var decrypDatosArray = decryptArray(response[0].UsuarioDatos, llaves.datos);
             var userId = decryptMessage(response[0].UsuarioClavePrivada, llaves.privado);
             userId = parseInt(userId) + 11111;
 
-            decrypDatosArray.telefono = $("#telefono").val();
-            decrypDatosArray.tipoCuenta = $("#cuenta").val();
-            decrypDatosArray.nip = $("#nip").val();
-            decrypDatosArray.rfc = $("#rfc").val();
-            decrypDatosArray.contrasena = $("#contrasena").val();
-            decrypDatosArray.numeroCuenta = userId
-            decrypDatosArray.saldo = 0.0
-            
-            var nuevosDatos = {
-                "UsuarioID": datos.id,
-                "Datos": encryptArray(decrypDatosArray, llaves.datos)
-            }
-            
-            $.ajax({
-                url: '../FuncionesPHP/ActualizarDatos.php',
-                type: 'POST',
-                data: nuevosDatos,
-                success: function(response) {
-                    window.location.href = "../Modulos/Principal.html?pagina=Home";
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error en la solicitud:', error);
+            if (validarDatos()) {
+                decrypDatosArray.telefono = $("#telefono").val();
+                decrypDatosArray.tipoCuenta = $("#cuenta").val();
+                decrypDatosArray.nip = $("#nip").val();
+                decrypDatosArray.rfc = $("#rfc").val();
+                decrypDatosArray.contrasena = $("#contrasena").val();
+                decrypDatosArray.numeroCuenta = userId
+                decrypDatosArray.saldo = 0.0
+                
+                var nuevosDatos = {
+                    "UsuarioID": datos.id,
+                    "Datos": encryptArray(decrypDatosArray, llaves.datos)
                 }
-            });
+                
+                $.ajax({
+                    url: '../FuncionesPHP/ActualizarDatos.php',
+                    type: 'POST',
+                    data: nuevosDatos,
+                    success: function(response) {
+                        window.location.href = "../Modulos/Principal.html?pagina=Home";
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud:', error);
+                    }
+                });
+            }
+
         },
         error: function (xhr, status, error) {
             console.log(error);
@@ -97,4 +99,66 @@ function actualizarDatos(datos) {
 
 
 
+}
+
+function validarDatos() {
+    if ($("#telefono").val() === "") {
+        Swal.fire({
+            title: "Datos erroneos.",
+            width: 600,
+            padding: "3em",
+            color: "#dc3545",
+            background: "#6c757d",
+            confirmButtonColor: "#dc3545"
+        });
+        return false;
+    }
+
+    if ($("#cuenta").val() === "0") {
+        Swal.fire({
+            title: "Datos erroneos.",
+            width: 600,
+            padding: "3em",
+            color: "#dc3545",
+            background: "#6c757d",
+            confirmButtonColor: "#dc3545"
+        });
+        return false;
+    }
+
+    if ($("#nip").val() === "") {
+        Swal.fire({
+            title: "Datos erroneos.",
+            width: 600,
+            padding: "3em",
+            color: "#dc3545",
+            background: "#6c757d",
+            confirmButtonColor: "#dc3545"
+        });
+        return false;
+    }
+
+    if ($("#rfc").val() === "") {
+        Swal.fire({
+            title: "Datos erroneos.",
+            width: 600,
+            padding: "3em",
+            color: "#dc3545",
+            background: "#6c757d",
+            confirmButtonColor: "#dc3545"
+        });
+        return false;
+    }
+
+    if ($("#contrasena").val() === "") {
+        Swal.fire({
+            title: "Datos erroneos.",
+            width: 600,
+            padding: "3em",
+            color: "#dc3545",
+            background: "#6c757d",
+            confirmButtonColor: "#dc3545"
+        });
+        return false;
+    }
 }

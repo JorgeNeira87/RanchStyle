@@ -1,10 +1,8 @@
 const cuentas = new Cuentas();
 Promise.all([cuentas.obtenerArrayCuentas()])
     .then(resultados => {
-        console.log(resultados[0])
         for (let i = 0; i < resultados[0].length; i++) {
             var usuarioDatos = decryptArray(resultados[0][i].UsuarioDatos, llaves.datos);
-            console.log(usuarioDatos)
             $("#destinatario").append($("<option>", {
                 value: resultados[0][i].UsuarioID,
                 text: usuarioDatos.name
@@ -31,41 +29,50 @@ $(document).ready(function () {
             .then(resultados => {
                 var claves = new ObtenerClaves(resultados[0]);
                 Promise.all([claves.obtenerClaves()])
-                .then(resultados => {
-                    arrayDatosTransaccion.remitenteId = resultados[0][0].UsuarioClavePublica;
-                    var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
-                    if ((datos.saldo - parseInt($("#cantidad").val())) >= 0) {
-                        console.log("Se Desposito");
-                        datos.saldo = datos.saldo - parseInt($("#cantidad").val());
-                        actualizarDatos(datos);
-
-                            var arrayDestinatario = {
-                                "id" : $("#destinatario").val()
+                    .then(resultados => {
+                        arrayDatosTransaccion.remitenteId = resultados[0][0].UsuarioClavePublica;
+                        var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
+                        if($("#nip").val() === datos.nip && $("#contrasena").val() === datos.contrasena){
+                            if ((datos.saldo - parseInt($("#cantidad").val())) >= 0) {
+                                datos.saldo = datos.saldo - parseInt($("#cantidad").val());
+                                actualizarDatos(datos);
+    
+                                var arrayDestinatario = {
+                                    "id": $("#destinatario").val()
+                                }
+                                var clavesDestinatario = new ObtenerClaves(arrayDestinatario);
+                                arrayDatosTransaccion.remitenteId = resultados[0].id;
+                                Promise.all([clavesDestinatario.obtenerClaves()])
+                                    .then(resultados => {
+                                        var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
+                                        datos.saldo = datos.saldo + parseInt($("#cantidad").val());
+                                        arrayDatosTransaccion.destinatarioId = resultados[0][0].UsuarioClavePublica;
+                                        actualizarDatos(datos);
+                                    })
+                                    .catch(error => {
+                                        console.error('Error:', error);
+                                    });
                             }
-                            var clavesDestinatario = new ObtenerClaves(arrayDestinatario);
-                            arrayDatosTransaccion.remitenteId = resultados[0].id;
-                            Promise.all([clavesDestinatario.obtenerClaves()])
-                                .then(resultados => {
-                                    var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
-                                    datos.saldo = datos.saldo + parseInt($("#cantidad").val());
-                                    arrayDatosTransaccion.destinatarioId = resultados[0][0].UsuarioClavePublica;
-                                    actualizarDatos(datos);
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                });
+                            else {
+                                validacion = false;
+                            };
+                        } else {
+                            Swal.fire({
+                                title: "Datos erroneos.",
+                                width: 600,
+                                padding: "3em",
+                                color: "#dc3545",
+                                background: "#6c757d",
+                                confirmButtonColor: "#dc3545"
+                            });
                         }
-                        else {
-                            validacion = false;
-                        };
-                        
+
                         $.ajax({
                             url: '../FuncionesPHP/Transacciones.php',
                             type: 'POST',
-                            data:  {"datos": encryptArray(arrayDatosTransaccion, llaves.firmas)},
+                            data: { "datos": encryptArray(arrayDatosTransaccion, llaves.firmas) },
 
                             success: (response) => {
-                                console.log(response);
                             },
                             error: function (xhr, status, error) {
                                 console.log(error);
@@ -90,8 +97,6 @@ function actualizarDatos(datosActualizados) {
         "UsuarioID": datosActualizados.id,
         "Datos": encryptArray(datosActualizados, llaves.datos)
     }
-    console.log(datosActualizados)
-    console.log(nuevosDatos)
     $.ajax({
         url: '../FuncionesPHP/ActualizarDatos.php',
         type: 'POST',

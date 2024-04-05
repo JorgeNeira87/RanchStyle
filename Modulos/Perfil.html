@@ -20,11 +20,18 @@
 <script>
     Promise.all([cuenta()])
         .then(resultados => {
+            var claves = new ObtenerClaves(resultados[0]);
+            Promise.all([claves.obtenerClaves()])
+                    .then(resultados => {
+                        var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
+                        $("#nombre").text(datos.name);
+                        $("#img").attr("src", datos.picture);
+                        $("#email").text(datos.email);
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
             let datos = resultados[0];
-            console.log(datos)
-            $("#nombre").text(datos.nombrecompleto);
-            $("#img").attr("src", datos.picture);
-            $("#email").text(datos.email);
         })
         .catch(error => {
             console.error(error);

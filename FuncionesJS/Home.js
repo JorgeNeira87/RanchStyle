@@ -5,7 +5,6 @@ Promise.all([cuenta()])
         Promise.all([claves.obtenerClaves()])
             .then(resultados => {
                 var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
-                console.log(datos)
                 $("#saldo").text(datos.saldo);
                 $("#tipo").text(datos.tipoCuenta);
                 $("#numero").text(datos.numeroCuenta);

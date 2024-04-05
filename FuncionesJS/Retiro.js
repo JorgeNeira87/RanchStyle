@@ -13,23 +13,34 @@ $(document).ready(function () {
             .then(resultados => {
                 var claves = new ObtenerClaves(resultados[0]);
                 Promise.all([claves.obtenerClaves()])
-                .then(resultados => {
-                    arrayDatosTransaccion.remitenteId = resultados[0][0].UsuarioClavePublica;
-                    var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
-                    if ((datos.saldo - parseInt($("#cantidad").val())) >= 0) {
-                        console.log("Se Retiro");
-                        datos.saldo = datos.saldo - parseInt($("#cantidad").val());
-                        actualizarDatos(datos);
+                    .then(resultados => {
+                        arrayDatosTransaccion.remitenteId = resultados[0][0].UsuarioClavePublica;
+                        var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
+                        if ($("#nip").val() === datos.nip && $("#contrasena").val() === datos.contrasena) {
+                            if ((datos.saldo - parseInt($("#cantidad").val())) >= 0) {
+                                console.log("Se Retiro");
+                                datos.saldo = datos.saldo - parseInt($("#cantidad").val());
+                                actualizarDatos(datos);
 
+                            }
+                            else {
+                                validacion = false;
+                            };
+                        } else {
+                            Swal.fire({
+                                title: "Datos erroneos.",
+                                width: 600,
+                                padding: "3em",
+                                color: "#dc3545",
+                                background: "#6c757d",
+                                confirmButtonColor: "#dc3545"
+                            });
                         }
-                        else {
-                            validacion = false;
-                        };
-                        
+
                         $.ajax({
                             url: '../FuncionesPHP/Transacciones.php',
                             type: 'POST',
-                            data:  {"datos": encryptArray(arrayDatosTransaccion, llaves.firmas)},
+                            data: { "datos": encryptArray(arrayDatosTransaccion, llaves.firmas) },
 
                             success: (response) => {
                                 console.log(response);

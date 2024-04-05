@@ -11,7 +11,6 @@ Promise.all([datosCuenta(), cuentas.obtenerArrayCuentasID()])
             guardarDatos(datos);
             Promise.all([claves.obtenerClaves()])
                 .then(resultados => {
-                    console.log(resultados[0]);
                     var session = new SessionDatos(resultados[0]);
                     session.guardarDatos();
                 })
@@ -23,7 +22,6 @@ Promise.all([datosCuenta(), cuentas.obtenerArrayCuentasID()])
         } else {
             Promise.all([claves.obtenerClaves()])
                 .then(resultados => {
-                    console.log(resultados[0]);
                     var session = new SessionDatos(resultados[0]);
                     session.guardarDatos();
                 })
@@ -48,7 +46,6 @@ function checarExistencia() {
 }
 
 function guardarDatos(datos) {
-    console.log("Entro al guardado")
     let clavePublica, clavePrivada, encryptedDatos;
     
     var arrayDatosUsuario = {
