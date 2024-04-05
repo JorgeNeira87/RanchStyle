@@ -21,6 +21,7 @@ var llaves = {
     "publico": "&+w89n.>SbV!£LZ`)fi\ZP;O$S=fAJ9Rj,opP'4mkU2[DjVsxf",
     "privado": "#B+[D?}Y0@?P3z95~[@[:gO{ME8p.eA!Xy8kcSOy%!:bXzb;^",
     "datos": "0*v6'W@7rRhM3me]/7sp2)~,U4&;sRC\{?DzW`jLJk{O[H[Ye",
+    "firmas": "9$^Qu&(3,1_uc(\N.Ol(Yl&zB7@|L@I;.o67pNO3oYa=lhd_r",
     "iv": "QU7,)$U.}0j<`&>__6\KmM3Kisj<q:f=n63cdvv?ue|+;.3x)Z"
 }
 

@@ -5,6 +5,12 @@
   "hints": {
     "axe/structure": "off",
     "no-inline-styles": "off",
-    "axe/text-alternatives": "off"
+    "axe/text-alternatives": "off",
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
+      }
+    ]
   }
 }

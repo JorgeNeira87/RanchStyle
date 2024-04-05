@@ -1,12 +1,20 @@
 Promise.all([cuenta()])
-.then(resultados => {
-    let datos = resultados[0];
-
-    $("#name").text(datos.nombre);
-    $("#imagen").attr("src", datos.picture);
-    loadModule();
-    spinner();
-});
+    .then(resultados => {
+        var claves = new ObtenerClaves(resultados[0]);
+        Promise.all([claves.obtenerClaves()])
+            .then(resultados => {
+                var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
+                console.log(datos)
+                $("#name").text(datos.name);
+                $("#imagen").attr("src", datos.picture);
+                // $("#movimientos").text(datos.saldo);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        loadModule();
+        spinner();
+    });
 
 function loadModule() {
     var urlActual = window.location.href;
@@ -36,7 +44,7 @@ $(window).scroll(function () {
     }
 });
 $('.back-to-top').click(function () {
-    $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+    $('html, body').animate({ scrollTop: 0 }, 1500, 'easeInOutExpo');
     return false;
 });
 

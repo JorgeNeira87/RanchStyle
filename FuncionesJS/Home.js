@@ -2,7 +2,7 @@ Promise.all([cuenta()])
     .then(resultados => {
         var claves = new ObtenerClaves(resultados[0]);
 
-        Promise.all([claves.obtenerClaves(), cuenta()])
+        Promise.all([claves.obtenerClaves()])
             .then(resultados => {
                 var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
                 console.log(datos)

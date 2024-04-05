@@ -3,21 +3,21 @@
     <div class="row g-3 align-items-center">
         <div class="col-sm-12 ">
             <div class="bg-secondary rounded h-100 p-4">
-                <h4 class="mb-4"><b>Retiro</b></h4>
+                <h4 class="mb-4"><b>Depósito</b></h4>
                 <form method="post">
                     <label for="NIP" class="form-label">Ingrese su cantidad </label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">$</span>
                         </div>
-                        <input placeholder="Cantidad a retirar" type="text" class="form-control">
+                        <input id="cantidad" placeholder="Cantidad a retirar" type="number" class="form-control">
                     </div>
-                    <label for="NIP" class="form-label">Ingrese su NIP</label>
+                    <label  for="NIP" class="form-label">Ingrese su NIP</label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">NIP</span>
                         </div>
-                        <input placeholder="Imagina el NIP" type="password" class="form-control">
+                        <input id="nip" placeholder="Imagina el NIP" type="password" class="form-control">
                     </div>
                     <label for="NIP" class="form-label">Ingrese el destinatario</label>
                     <div class="input-group mb-3">
@@ -28,9 +28,9 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">@</span>
                         </div>
-                        <input placeholder="Ingresa tu firma" type="password" class="form-control">
+                        <input id="contrasena" placeholder="Ingresa tu firma" type="password" class="form-control">
                     </div>
-                    <button type="submit" name="Confirmacion" class="btn btn-danger">Confirmar</button>
+                    <button id="depositar" type="submit" name="depositar" class="btn btn-danger">Depositar</button>
                 </form>
             </div>
         </div>
