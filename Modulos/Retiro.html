@@ -1,37 +1,43 @@
 <!-- Form Start -->
 <div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
+    <div class="row g-3 align-items-center">
+        <div class="col-sm-12 ">
             <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4">Retiro</h6>
+                <h4 class="mb-4"><b>Retiro</b></h4>
                 <form method="post">
-                    <div class="mb-3">
-                        <label for="Cantidad" class="form-label">Cantidad a retirar</label>
-                        <div class="input-group mb-3">
-                            <span class="input-group-text">$</span>
-                            <input type="number" step=0.01 class="form-control" name="Cantidad" id="Cantidad"
-                                aria-describedby="emailHelp">
+
+                    <label for="NIP" class="form-label">Ingrese su NIP</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">NIP</span>
                         </div>
-                        <div id="emailHelp" class="form-text">Pon la cantidad a retirar con 2 decimales max.
-                        </div>
+                        <input placeholder="Imagina el NIP" type="password" class="form-control"
+                            aria-label="Amount (to the nearest dollar)">
                     </div>
-                    <button type="submit" name="Confirmacion" class="btn btn-danger">Retirar</button>
-                </form>
-                <!-- Condicion -->
-                <form action="Funcion.php" method="post">
-                    <div class="mb-3">
-                        <label for="Contraseña" class="form-label">Ingrese su contraseña</label>
-                        <input type="password" class="form-control" name="Contraseña" id="Contraseña"
-                            aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text">No se equivoque.
+                    <label for="NIP" class="form-label">Ingrese su cantidad </label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">0.00</span>
                         </div>
-                        <input type="hidden" name="Cantidad" value=""><!-- Cantidad(Dentro de Value) -->
+                        <input placeholder="$ Cantidad a retirar" type="text" class="form-control"
+                            aria-label="Amount (to the nearest dollar)">
+                    </div>
+
+                    <label for="NIP" class="form-label"> Firma electronica </label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Firma</span>
+                        </div>
+                        <input placeholder="Ingrese su firma" type="text" class="form-control"
+                            aria-label="Amount (to the nearest dollar)">
                     </div>
                     <button type="submit" name="Confirmacion" class="btn btn-danger">Confirmar</button>
                 </form>
-                <!-- Fin de la condicion -->
             </div>
         </div>
     </div>
 </div>
 <!-- Form End -->
+<div class="col-md-12 text-center align-self-center">
+    <img src="../Imagenes/bbb.png" class="rounded-circle img-fluid" style="min-width: 3vh; min-height: 30vh;">
+</div>
