@@ -4,7 +4,7 @@ Promise.all([datosCuenta(), arrayCuentas()])
     .then(resultados => {
         datos = resultados[0];
         ArrayCuentas = resultados[1];
-
+        console.log(checarExistencia())
         if (!checarExistencia()) {
             guardarDatos(datos);
             sessionDatos(datos);
@@ -20,8 +20,9 @@ Promise.all([datosCuenta(), arrayCuentas()])
     });
 
 function checarExistencia() {
+    console.log("entra a la funcion d existencia")
     for (let i = 0; i < ArrayCuentas.length; i++) {
-        if (ArrayCuentas[i] = datos.id) {
+        if (ArrayCuentas[i] === datos.id) {
             return true;
         }
     }
@@ -37,7 +38,11 @@ function sessionDatos(datos) {
             dato: datos.id
         },
         success: function (response) {
+            console.log(response)
+
             var decrypDatosArray = decryptArray(response[0].UsuarioDatos, llaves.datos);
+
+            console.log(decrypDatosArray);
 
             var arrayDatos = {
                 "id": decrypDatosArray.id,
@@ -73,6 +78,7 @@ function sessionDatos(datos) {
 }
 
 function guardarDatos(datos) {
+    console.log("Entro al guardado")
     let clavePublica, clavePrivada, encryptedDatos;
     
     var arrayDatosUsuario = {
