@@ -51,7 +51,7 @@
         <div class="col-sm-12 col-xl-6">
             <div class="bg-dark bg-opacity-25 text-center rounded p-4">
                 <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Estado de cuenta</h6>
+                    <h6 class="mb-0">Cripto</h6>
                 </div>
                 <canvas id="estadoCuenta"></canvas>
             </div>
@@ -76,31 +76,15 @@
             <a class="text-danger" href="">Show All</a>
         </div>
         <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
+            <table class="table text-start align-middle table-bordered table-hover mb-0 table-dark">
                 <thead>
                     <tr class="text-white">
-                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Usuario</th>
+                        <th scope="col">Destinatario</th>
                         <th scope="col">Cantidad</th>
-                        <th scope="col">Fecha</th>
+                        <th scope="col">Tipo</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <!-- Select -->
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td><!-- Columna ID --></td>
-                        <td><!-- Columna Usuario --></td>
-                        <!-- Condicion -->
-                        <td class="text-danger">-$<!-- Columna Cantidad --></td>
-                        <!-- Condicion si no -->
-                        <td class="text-success">+$<!-- Columna Cantidad --></td>
-                        <!-- Cierre de condicion -->
-                        <td><!-- Columna Fecha --></td>
-                    </tr>
-                    <!-- Cierre de Foreach -->
-                </tbody>
+                <tbody id="tabla" class="table-secondary"></tbody>
             </table>
         </div>
     </div>
@@ -111,5 +95,6 @@
 <script src="../FuncionesJS/Variables.js"></script>
 <script src="../FuncionesJS/Encriptacion.js"></script>
 <script src="../FuncionesJS/Cuenta.js"></script>
+<script src="../FuncionesJS/Transacciones.js"></script>
 <script src="../FuncionesJS/ObtenerClaves.js"></script>
 <script src="../FuncionesJS/Home.js"></script>
