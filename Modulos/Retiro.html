@@ -11,26 +11,26 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">NIP</span>
                         </div>
-                        <input placeholder="Imagina el NIP" type="password" class="form-control"
+                        <input id="nip" placeholder="Imagina el NIP" type="password" class="form-control"
                             aria-label="Amount (to the nearest dollar)">
                     </div>
-                    <label for="NIP" class="form-label">Ingrese su cantidad </label>
+                    <label for="cantidad" class="form-label">Ingrese su cantidad </label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">0.00</span>
                         </div>
-                        <input placeholder="$ Cantidad a retirar" type="text" class="form-control"
+                        <input id="cantidad" placeholder="$ Cantidad a retirar" type="text" class="form-control"
                             aria-label="Amount (to the nearest dollar)">
                     </div>
-                    <label for="NIP" class="form-label"> Firma electronica </label>
+                    <label for="Firma" class="form-label"> Firma electronica </label>
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">Firma</span>
                         </div>
-                        <input placeholder="Ingrese su firma" type="text" class="form-control"
+                        <input id="firma" placeholder="Ingrese su firma" type="text" class="form-control"
                             aria-label="Amount (to the nearest dollar)">
                     </div>
-                    <button type="submit" name="Confirmacion" class="btn btn-danger">Confirmar</button>
+                    <button id="retirar" type="submit" name="Confirmacion" class="btn btn-danger">Confirmar</button>
                 </form>
             </div>
         </div>
@@ -40,3 +40,10 @@
 <div class="col-md-12 text-center align-self-center">
     <img src="../Imagenes/bbb.png" class="rounded-circle img-fluid" style="min-width: 3vh; min-height: 30vh;">
 </div>
+
+<script src="../Librerias/CryptoJS/crypto-js.js"></script>
+
+<script src="../FuncionesJS/Variables.js"></script>
+<script src="../FuncionesJS/Encriptacion.js"></script>
+<script src="../FuncionesJS/Cuentas.js"></script>
+<script src="../FuncionesJS/Retiro.js"></script>
