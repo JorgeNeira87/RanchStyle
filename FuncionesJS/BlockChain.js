@@ -7,9 +7,13 @@ Promise.all([datosCuenta(), arrayCuentas()])
 
         if (!checarExistencia()) {
             guardarDatos(datos);
+            sessionDatos(datos);
+            window.location.href = "../Modulos/Principal.html?pagina=PrimeraVez";
+        } else {
+            sessionDatos(datos);
+            window.location.href = "../Modulos/Principal.html?pagina=Home";
         }
         
-        sessionDatos(datos);
     })
     .catch(error => {
         console.error('Error:', error);
@@ -50,7 +54,7 @@ function sessionDatos(datos) {
                 type: 'POST',
                 data: arrayDatos,
                 success: function(response) {
-                    window.location.href = "../Modulos/Principal.html";
+                    // window.location.href = "../Modulos/Principal.html?pagina=Home";
                 },
                 error: function(xhr, status, error) {
                     console.error('Error en la solicitud:', error);
