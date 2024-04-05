@@ -21,7 +21,6 @@ Promise.all([cuenta()])
     });
 
 function mostrarTransaccioes(array, clavePublica) {
-    console.log(clavePublica)
 
     var tbody = document.getElementById("tabla");
 
@@ -35,9 +34,12 @@ function mostrarTransaccioes(array, clavePublica) {
             tdcantidad.textContent = Transaccion.cantidad;
             var tdtipo = document.createElement("td");
             tdtipo.textContent = Transaccion.tipoTransaccion;
+            var tdfecha = document.createElement("td");
+            tdfecha.textContent = Transaccion.fecha;
             tr.appendChild(tdusuario);
             tr.appendChild(tdcantidad);
             tr.appendChild(tdtipo);
+            tr.appendChild(tdfecha);
 
             tbody.appendChild(tr);
 

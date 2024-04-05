@@ -6,7 +6,8 @@ $(document).ready(function () {
             "remitenteId": "",
             "destinatarioId": "terceros",
             "cantidad": $("#cantidad").val(),
-            "tipoTransaccion": "retiro"
+            "tipoTransaccion": "retiro",
+            "fecha": fecha()
         };
 
         Promise.all([cuenta()])
@@ -81,4 +82,18 @@ function actualizarDatos(datosActualizados) {
             console.error('Error en la solicitud:', error);
         }
     });
+}
+
+function fecha() {
+    var fecha = new Date();
+    var dia = ("0" + fecha.getDate()).slice(-2);
+    var mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
+    var anio = fecha.getFullYear();
+    var horas = ("0" + fecha.getHours()).slice(-2);
+    var minutos = ("0" + fecha.getMinutes()).slice(-2);
+    var segundos = ("0" + fecha.getSeconds()).slice(-2);
+
+    var fechaHoraFormateada = dia + "-" + mes + "-" + anio + " " + horas + ":" + minutos + ":" + segundos;
+
+    return fechaHoraFormateada;
 }

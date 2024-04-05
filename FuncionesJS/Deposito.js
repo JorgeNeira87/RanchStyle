@@ -22,7 +22,8 @@ $(document).ready(function () {
             "remitenteId": "",
             "destinatarioId": "",
             "cantidad": $("#cantidad").val(),
-            "tipoTransaccion": "Depósito"
+            "tipoTransaccion": "Depósito",
+            "fecha": fecha()
         };
 
         Promise.all([cuenta()])
@@ -41,13 +42,22 @@ $(document).ready(function () {
                                     "id": $("#destinatario").val()
                                 }
                                 var clavesDestinatario = new ObtenerClaves(arrayDestinatario);
-                                arrayDatosTransaccion.remitenteId = resultados[0].id;
                                 Promise.all([clavesDestinatario.obtenerClaves()])
                                     .then(resultados => {
                                         var datos = decryptArray(resultados[0][0].UsuarioDatos, llaves.datos);
                                         datos.saldo = datos.saldo + parseInt($("#cantidad").val());
-                                        arrayDatosTransaccion.destinatarioId = resultados[0][0].UsuarioClavePublica;
+                                        arrayDatosTransaccion.destinatarioId = datos.name;
                                         actualizarDatos(datos);
+                                        $.ajax({
+                                            url: '../FuncionesPHP/Transacciones.php',
+                                            type: 'POST',
+                                            data: { "datos": encryptArray(arrayDatosTransaccion, llaves.firmas) },
+                                            success: (response) => {
+                                            },
+                                            error: function (xhr, status, error) {
+                                                console.log(error);
+                                            }
+                                        });
                                     })
                                     .catch(error => {
                                         console.error('Error:', error);
@@ -66,18 +76,6 @@ $(document).ready(function () {
                                 confirmButtonColor: "#dc3545"
                             });
                         }
-
-                        $.ajax({
-                            url: '../FuncionesPHP/Transacciones.php',
-                            type: 'POST',
-                            data: { "datos": encryptArray(arrayDatosTransaccion, llaves.firmas) },
-
-                            success: (response) => {
-                            },
-                            error: function (xhr, status, error) {
-                                console.log(error);
-                            }
-                        });
 
                         // $("#movimientos").text(datos.saldo);
                     })
@@ -108,4 +106,18 @@ function actualizarDatos(datosActualizados) {
             console.error('Error en la solicitud:', error);
         }
     });
+}
+
+function fecha() {
+    var fecha = new Date();
+    var dia = ("0" + fecha.getDate()).slice(-2);
+    var mes = ("0" + (fecha.getMonth() + 1)).slice(-2);
+    var anio = fecha.getFullYear();
+    var horas = ("0" + fecha.getHours()).slice(-2);
+    var minutos = ("0" + fecha.getMinutes()).slice(-2);
+    var segundos = ("0" + fecha.getSeconds()).slice(-2);
+
+    var fechaHoraFormateada = dia + "-" + mes + "-" + anio + " " + horas + ":" + minutos + ":" + segundos;
+
+    return fechaHoraFormateada;
 }
