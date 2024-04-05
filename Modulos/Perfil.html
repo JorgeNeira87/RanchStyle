@@ -7,10 +7,11 @@
                 <div class="testimonial-item text-center">
                     <img class="img-fluid rounded-circle mx-auto mb-4" id="img"
                         style="width: 400px; height: 400px;">
-                    <h5 class="mb-1" id="nombre"><!-- Nombre --></h5>
-                    <p><!-- Rango --></p>
-                    <p class="mb-0">Email:
-                    <p id="email"></p><!-- Email --></p>
+                    <h5 class="mb-1" id="nombre"></h5>
+                    <p class="mb-0">Email:<p id="email"></p></p>
+                    <p class="mb-0">Numero Telefonico:<p id="telefono"></p</p>
+                    <p class="mb-0">RFC:<p id="rfc"></p></p>
+                    <p class="mb-0">NIP:<p id="nip"></p></p>
                 </div>
             </div>
         </div>
@@ -27,6 +28,9 @@
                         $("#nombre").text(datos.name);
                         $("#img").attr("src", datos.picture);
                         $("#email").text(datos.email);
+                        $("#telefono").text(datos.telefono);
+                        $("#rfc").text(datos.rfc);
+                        $("#nip").text(datos.nip);
                     })
                     .catch(error => {
                         console.error('Error:', error);
