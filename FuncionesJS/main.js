@@ -1,13 +1,27 @@
 Promise.all([cuenta()])
 .then(resultados => {
     let datos = resultados[0];
-    console.log(datos)
+
     $("#name").text(datos.nombre);
     $("#imagen").attr("src", datos.picture);
 });
-function loadModule(modulePath) {
+
+function loadModule() {
+    var urlActual = window.location.href;
+    var parametros = new URLSearchParams(new URL(urlActual).search);
+    var valor = parametros.get('pagina');
+    var modulo = "./" + valor + ".html";
+    var moduloID = "#" + valor;
+
+    $(Modulos.Home).removeClass("active");
+    $(Modulos.Desactivar).removeClass("active");
+    $(Modulos.Retiro).removeClass("active");
+
+    $(moduloID).addClass("active");
+
+
     const moduleLoader = new ModuleLoader('contenido');
-    moduleLoader.loadModule(modulePath);
+    moduleLoader.loadModule(modulo);
 }
 
 

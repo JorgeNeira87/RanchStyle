@@ -23,3 +23,9 @@ var llaves = {
     "datos": "0*v6'W@7rRhM3me]/7sp2)~,U4&;sRC\{?DzW`jLJk{O[H[Ye",
     "iv": "QU7,)$U.}0j<`&>__6\KmM3Kisj<q:f=n63cdvv?ue|+;.3x)Z"
 }
+
+var Modulos = {
+    "Home": "#Home",
+    "Desactivar": "#Desactivar",
+    "Retiro": "#Retiro"
+}

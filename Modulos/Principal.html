@@ -57,9 +57,9 @@
                 </div>
                 <!-- Nav bar  -->
                 <div class="navbar-nav w-100">
-                    <a onclick="loadModule('Home.html');" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
-                    <a onclick="loadModule('Retiro.html');" class="nav-item nav-link"><i class="fa fa-money-bill me-2"></i>Retiro</a>
-                    <a onclick="loadModule('Desactivar.html');" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Desactivar cuenta</a>
+                    <a href="?pagina=Home" id="Home" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Home</a>
+                    <a href="?pagina=Retiro" id="Retiro" class="nav-item nav-link"><i class="fa fa-money-bill me-2"></i>Retiro</a>
+                    <a href="?pagina=Desactivar" id="Desactivar" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Desactivar cuenta</a>
                 </div>
             </nav>
         </div>
@@ -83,7 +83,7 @@
                             <span class="d-none d-lg-inline-flex"><!-- Nombre --></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end border-0 rounded-0 rounded-bottom m-0">
-                            <a onclick="loadModule('Perfil.html')" class="dropdown-item">Mi perfil</a>
+                            <a href="?pagina=Perfil" class="dropdown-item">Mi perfil</a>
                             <a href="../FuncionesPHP/Logout.php" class="dropdown-item">Salir</a>
                         </div>
                     </div>
@@ -138,8 +138,8 @@
     <script src="../FuncionesJS/UserData.js"></script>
     <script src="../FuncionesJS/main.js"></script>
     
-    <script>
-        loadModule("./Home.html");
+    <script> 
+        loadModule();
     </script>
 </body>
 

@@ -1,0 +1,39 @@
+<!-- Form Start -->
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">Retiro</h6>
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="Cantidad" class="form-label">Numero de telefono:</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">#</span>
+                            <input type="text" class="form-control" name="telefono" id="telefono">
+                        </div>
+                        <label for="Cantidad" class="form-label">NIP:</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">#</span>
+                            <input type="number" inputmode="numeric" maxlength="4" class="form-control" name="nip" id="nip">
+                        </div>
+                        <label for="Cantidad" class="form-label">RFC:</label>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" name="rfc" id="rfc">
+                        </div>
+                        <label for="Cantidad" class="form-label">Contraseña:</label>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">$</span>
+                            <input type="password" class="form-control" name="contrasena" id="contrasena">
+                        </div>
+                    </div>
+                    <button type="submit" name="guardar" id="guardar" class="btn btn-danger">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Form End -->
+<script src="../Librerias/CryptoJS/crypto-js.js"></script>
+
+<script src="../FuncionesJS/Encriptacion.js"></script>
+<script src="../FuncionesJS/PrimeraVez.js"></script>
