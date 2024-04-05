@@ -20,9 +20,10 @@ Promise.all([datosCuenta(), arrayCuentas()])
     });
 
 function checarExistencia() {
-    console.log("entra a la funcion d existencia")
     for (let i = 0; i < ArrayCuentas.length; i++) {
-        if (ArrayCuentas[i] === datos.id) {
+            console.log(ArrayCuentas[i].UsuarioID)
+            console.log(datos.id)
+        if (ArrayCuentas[i].UsuarioID === datos.id) {
             return true;
         }
     }
