@@ -10,7 +10,6 @@ Promise.all([cuenta()])
                 $("#saldo").text(datos.saldo);
                 $("#tipo").text(datos.tipoCuenta);
                 $("#numero").text(datos.numeroCuenta);
-                // $("#movimientos").text(datos.saldo);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -23,6 +22,7 @@ Promise.all([cuenta()])
 function mostrarTransaccioes(array, clavePublica) {
 
     var tbody = document.getElementById("tabla");
+    let movimientos = 0;
 
     for (let i = 0; i < array.length; i++) {
         var Transaccion = decryptArray(array[i].datos, llaves.firmas)
@@ -42,7 +42,9 @@ function mostrarTransaccioes(array, clavePublica) {
             tr.appendChild(tdfecha);
 
             tbody.appendChild(tr);
-
+            movimientos++;
         }
     }
+
+    $("#movimientos").text(movimientos);
 }
