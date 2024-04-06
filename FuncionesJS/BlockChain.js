@@ -6,12 +6,11 @@ Promise.all([datosCuenta(), cuentas.obtenerArrayCuentasID()])
         datos = resultados[0];
         ArrayCuentas = resultados[1];
         var claves = new ObtenerClaves(datos);
-
         if (!checarExistencia()) {
             guardarDatos(datos);
             Promise.all([claves.obtenerClaves()])
-                .then(resultados => {
-                    var session = new SessionDatos(resultados[0]);
+            .then(resultados => {
+                var session = new SessionDatos(resultados[0]);
                     session.guardarDatos();
                 })
                 .catch(error => {

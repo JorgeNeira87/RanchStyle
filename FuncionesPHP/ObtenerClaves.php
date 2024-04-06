@@ -5,8 +5,7 @@
 
         $dato = $_GET['dato'];
 
-        $sql = "SELECT UsuarioClavePrivada, UsuarioClavePublica, UsuarioDatos FROM usuarios WHERE UsuarioID = :llave";
-        $cuentas = $cnnPDO ->prepare($sql);
+        $sql = "SELECT UsuarioID id, UsuarioClavePrivada, UsuarioClavePublica, UsuarioDatos FROM usuarios WHERE UsuarioID = :llave";        $cuentas = $cnnPDO ->prepare($sql);
         $cuentas->bindParam(':llave', $dato);
         $cuentas-> execute();
         $datos = $cuentas->fetchAll(PDO::FETCH_ASSOC);
