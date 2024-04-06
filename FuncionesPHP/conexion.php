@@ -2,7 +2,7 @@
 $utf8 = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
 
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'banco');
+define('DB_NAME', 'si_banco');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
