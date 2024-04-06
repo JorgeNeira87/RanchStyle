@@ -19,8 +19,10 @@ class SessionDatos {
     }
 
     construirArrayClaves() {
+        console.log(this.datos)
+        console.log(this.datos[0].UsuarioDatos)
         var DatosArray = decryptArray(this.datos[0].UsuarioDatos, llaves.datos);
-
+        console.log(DatosArray)
         this.arrayDatos = {
             "id": DatosArray.id,
             "email": DatosArray.email,

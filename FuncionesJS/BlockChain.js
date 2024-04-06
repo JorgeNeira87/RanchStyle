@@ -64,7 +64,8 @@ function guardarDatos(datos) {
     var arrayDatos = {
         "UsuarioID": datos.id,
         "ClavePublica": clavePublica,
-        "ClavePrivada": clavePrivada
+        "ClavePrivada": clavePrivada,
+        "Datos": encryptedDatos
     }
 
     $.ajax({

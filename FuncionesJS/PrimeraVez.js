@@ -43,7 +43,6 @@ $(document).ready(function() {
         Promise.all([cuenta()])
         .then(resultados => {
             let datos = resultados[0];
-        
             actualizarDatos(datos);
         });
     });
@@ -70,7 +69,7 @@ function actualizarDatos(datos) {
                 decrypDatosArray.contrasena = $("#contrasena").val();
                 decrypDatosArray.numeroCuenta = userId
                 decrypDatosArray.saldo = 0.0
-                
+
                 var nuevosDatos = {
                     "UsuarioID": datos.id,
                     "Datos": encryptArray(decrypDatosArray, llaves.datos)
@@ -161,4 +160,5 @@ function validarDatos() {
         });
         return false;
     }
+    return true;
 }
