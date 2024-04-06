@@ -13,7 +13,7 @@ var Credencial = {
     };
 
 var Links = {
-    "local": "http://localhost:8081/RanchStyle/Modulos/BlockChain.html",
+    "local": "http://localhost/RanchStyle/Modulos/BlockChain.html",
     "scope": "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email"
 }
 
