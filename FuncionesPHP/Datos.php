@@ -2,11 +2,6 @@
     session_start();
     try {
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $_SESSION["correo"] = $_POST['email'];
-            $_SESSION["nombre"] = $_POST['given_name'];
-            $_SESSION["apellidos"] = $_POST['family_name'];
-            $_SESSION["nombrecompleto"] = $_POST['name'];
-            $_SESSION["imagen"] = $_POST['picture'];
             $_SESSION["id"] = $_POST['id'];
             $_SESSION["clavePrivada"] = $_POST['clavePrivada'];
             $_SESSION["clavePublica"] = $_POST['clavePublica'];
